@@ -23,17 +23,24 @@ switch (difficulty)
         attemptsRemaining = 4;
         Console.WriteLine($"\nHARD Mode Selected! Attempts: {attemptsRemaining}");
         break;
+
+    case "cheat":
+        {
+            attemptsRemaining = -1;
+            Console.WriteLine($"\nCHEAT Enabled! Infinite Attempts");
+            break;
+        }
 }
 
 Console.Write("Guess a secret number:");
 int secretNumber = new Random().Next(1, 101);
-while (attemptsRemaining > 0)
+while (attemptsRemaining != 0)
 {
     attemptsRemaining--;
     int guessedNumber = int.Parse(Console.ReadLine());
     string highOrLow = (guessedNumber > secretNumber)
     ? "Too High!" : "Too Low!";
-    string attemptsMessage = (attemptsRemaining > 0) ? $"\n{highOrLow} {attemptsRemaining} attempts left... " : $"\nSecret number was {secretNumber}...\nGAME OVER";
+    string attemptsMessage = (attemptsRemaining != 0) ? $"\n{highOrLow} {attemptsRemaining} attempts left... " : $"\nSecret number was {secretNumber}...\nGAME OVER";
     bool correct = (guessedNumber == secretNumber);
     string result = (guessedNumber == secretNumber)
     ? "\nYou guessed the secret number!" : attemptsMessage;
