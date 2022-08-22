@@ -7,7 +7,9 @@ while (attemptsRemaining > 0)
 {
     attemptsRemaining--;
     int guessedNumber = int.Parse(Console.ReadLine());
-    string attemptsMessage = (attemptsRemaining > 0) ? $"{attemptsRemaining} attempts left... " : $"\nSecret number was {secretNumber}...\nGAME OVER";
+    string highOrLow = (guessedNumber > secretNumber)
+    ? "Too High!" : "Too Low!";
+    string attemptsMessage = (attemptsRemaining > 0) ? $"{highOrLow} {attemptsRemaining} attempts left... " : $"\nSecret number was {secretNumber}...\nGAME OVER";
     bool correct = (guessedNumber == secretNumber);
     string result = (guessedNumber == secretNumber)
     ? "You guessed the secret number!" : attemptsMessage;
